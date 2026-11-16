@@ -6,9 +6,9 @@ Welcome to the official community feedback repository for [Schemity](https://sch
 
 We use GitHub Issues to track all feedback. This is the primary way to reach the development team.
 
-- **Report a bug:** [create a new bug report](https://github.com/tbson/schemity-feedback/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBUG%5D+)
-- **Request a feature:** [submit a feature request](https://github.com/tbson/schemity-feedback/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=%5BFEATURE%5D+)
-- **General feedback and questions:** [open a new issue](https://github.com/tbson/schemity-feedback/issues/new) or join the [Discord community](https://discord.gg/DVgaXN52ex)
+- **Report a bug:** [create a new bug report](https://github.com/schemity/feedback/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBUG%5D+)
+- **Request a feature:** [submit a feature request](https://github.com/schemity/feedback/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=%5BFEATURE%5D+)
+- **General feedback and questions:** [open a new issue](https://github.com/schemity/feedback/issues/new) or join the [Discord community](https://discord.gg/DVgaXN52ex)
 
 Before creating a new issue, please search the existing issues to see if your feedback has already been reported.
 
