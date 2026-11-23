@@ -2,6 +2,29 @@
 
 Release notes for [Schemity](https://schemity.com), the offline desktop ERD tool. Newest first. Download the latest version at [schemity.com](https://schemity.com/#platforms).
 
+## v2.15.0 - 2026-11-23
+- ✨ Schemity Free: after the 2-week Pro trial the desktop app stays free with no time limit. It connects to PostgreSQL, MySQL, MariaDB, and SQLite directly or over SSH, reverse engineers and refreshes them, generates and applies migrations, exports SQL in the diagram's own database, and keeps the MCP server on for reading the schema and editing tables, relations, and legends.
+- ✨ Schemity Pro is what a license gives: impact analysis and the change preview, lint, context views and the Context Map, the data dictionary, SQL Server, CockroachDB, Cloudflare D1, and Snowflake, SQL converted to other databases and the other export formats, images without the watermark, and new and imported workspaces.
+- ✨ Lint findings with a mechanical remedy get a Fix button: a dialog states the change, offers a choice where there is more than one remedy, and applies it as one unsaved, undoable edit. Fixes cover a foreign key with no index, a redundant index, a link table with no uniqueness, timestamp without time zone, money as float, a nullable boolean, created_at, and SET NULL on a NOT NULL column.
+- ✨ PostgreSQL exclusion constraints (EXCLUDE USING gist ...) are read, imported from pg_dump, written back verbatim, and listed as read-only Exclusion rows in the Unique constraints tab; adding one shows an impact finding, and converting to another database drops it with a note.
+- ✨ PostgreSQL 18 temporal and NOT ENFORCED constraints are kept as declared: a primary key or UNIQUE WITHOUT OVERLAPS, a foreign key's PERIOD, and a CHECK or foreign key NOT ENFORCED (MySQL CHECK too) are read, imported, written back, and shown as read-only tags. A temporal foreign key offers only NO ACTION, the one action PostgreSQL takes on it.
+- ✨ Preview changes works on a design-only diagram: the corner button shows while an unsaved edit changes a table, column, key, or index, compared with the diagram as last loaded or saved.
+- 🔧 The plan is shown by a badge (Pro trial with the days left, Free, or Pro), by [Free] in the window title on Schemity Free, and by the License dialog, which names the plan - Pro, Pro (Team, 15 seats), Education, Pro trial, or Free - and on Free lists what Free includes and what Pro adds.
+- 🔧 The end of the Pro trial is a corner notice that returns at each launch until it is closed or followed, never a dialog that stops work. A locked feature says it is part of Schemity Pro, with a Get Pro link.
+- 🔧 Preview changes appears only when an unsaved edit changes the schema, never for a moved table or a reshaped relation.
+- 🔧 SQL Server impact analysis reports rounding and range loss on date type changes: DATETIME to DATETIME2 below precision 3, DATETIME2 back to DATETIME, and changes to SMALLDATETIME or DATE.
+- 🐛 Import SQL no longer drops a table whose virtual column pg_dump writes without VIRTUAL, and reads ADD CONSTRAINT ... NOT NULL and ALTER COLUMN SET/DROP NOT NULL.
+- 🐛 Opening the app right after a new version was deployed no longer shows an error while the page reloads.
+
+## v2.14.9 - 2026-11-18
+- ✨ Migration Check: a free GitHub Action (schemity/ci) and the `schemity` command line tool report what the SQL migrations in a pull request do and the lint findings they add, with no database, as notices, a job summary, and optionally one pull request comment. It reads goose and dbmate up halves, skips down files, follows views and ON DELETE CASCADE, and flags a MySQL inline REFERENCES clause that MySQL 8.4 silently ignores.
+- ✨ Cloudflare D1 is its own database type with its logo, read from the remote database over Cloudflare's API or from a local wrangler file. Schemity never writes to D1: Save shows the planned SQL to run yourself and warns when a change rebuilds a table, since D1 then cascades deletes to child rows.
+- ✨ Drafts on every database: a saved draft keeps the schema it was drawn against, and on reopen merges three-way with the database as it is now, so a change made there since is not planned away; when both moved you choose Keep my changes or Discard draft, with conflicts named.
+- 🔧 Resizing a table or legend toward a neighbour snaps to the standard 34 px gap and shows the band, as dragging does.
+- 🔧 Every locked feature carries one way out - the pricing page on the desktop app, the desktop download on Lite - and the License dialog says where a key comes from.
+- 🔧 The entity dialog's description box starts at 2 lines, leaving more room for the colour picker and constraint tabs.
+- 🐛 Confirmation dialogs follow dark mode.
+
 ## v2.14.8 - 2026-11-15
 - ✨ Star a diagram to list it in a Starred group above the workspaces, across every workspace, reorderable by dragging.
 - ✨ Import Schemity JSON on a blank canvas fills the empty diagram with the file's tables, relations, legends, context views, and Context Map as one undoable change, keeping the diagram's own connection.
